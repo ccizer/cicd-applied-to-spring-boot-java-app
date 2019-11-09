@@ -2,3 +2,4 @@
 Implementing Continuous Integration/Continuous Delivery on Spring Boot Java App
 
 [![Build Status](https://travis-ci.com/ccizer/cicd-applied-to-spring-boot-java-app.svg)](https://travis-ci.com/ccizer/cicd-applied-to-spring-boot-java-app)
+[![codecov](https://codecov.io/gh/ccizer/cicd-applied-to-spring-boot-java-app/branch/master/graph/badge.svg)](https://codecov.io/gh/ccizer/cicd-applied-to-spring-boot-java-app)
