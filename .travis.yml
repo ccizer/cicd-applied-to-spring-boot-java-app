@@ -16,16 +16,15 @@ addons:
   sonarcloud:
     organization: "cicd-applied-to-spring-boot-java-app-ccizer"
     token:
-      secure: "cTqbtyfL4WCMjYYangh/dEUJ8C9Gt6+wNHFZ0JFl6UyM+iDsNIgGeYjXJZ+lXz6laRTQEWt1/mbFNx7X7PAOjH/ONcS0aUPy4M2+SuSLIfvpSLI1d1o0tK/hAwlXoMSA7yYdPkbWF48VgQJnTcCgufyaTppjZmKmEgmuR1eZuuo3dLRVQAoWsSjARl1WbUnnDhvsDxppZ7ffq/9kL1Lcmkks7TGrxGe1aqqbfeT39KG4i89POKz3lJ3tdakA2eUVP4rvaCkHNCqxpJ5R8Fz17hDpIGArvZvBwqofq/h9ob9ZL1OHYfriaS6wcAnrBctjC5CdcX9tAZ5M5ZhDyM82z7K3aDwvjVxS39471sZITWW+CLaPRGxqTRg81Rod1wngAwnkQ4MeuiVDH1hy4meKxwZICob2SXQfw3G7GTInnFibUlEJjA7AAuVTH1SWBxQ0/8lsw6ueUejTFJ7DbVzM16TnHEaNXSOxTrjgFFXbcj2O34YJQNTlmzbeBOJWOfCzkKfwpJEKDnVTZu+PYG8Bsjw1XY9lOzmSFUIWgP3MSwTDsew5138l//RRCHurMi/zzjwZmiFeNDnXEVz3XMpnUPxIu7sfBIcu7QE4xkC40xvKv3cDBvGAxR6Fdo38YT0ImBPXwJ0wWuc+mzsDugbhOs+kii4eziZxcxTdLHVT+xc="
+      secure: "GkSzHoqu+9lDVEE8piQFhWbdPq+p3K1FqNm8irRAZOnsgHYdzMCvOPw0KTMoYXzYNjdy1ug8nSjfOx5T1z9ZUx6p2gFbT8vtyiMatbukVdWOGK9jlR0MJ6YqHTuYx04j/T+X0aZsMc45pDlRpf5u+t+PA5JY7W6kwioO9IhUBeDvIoW/DUEGPi/oyKfpel3dbVBc5E184VNa6MvHsKfaEZkc8nTTJS5sZC4//7TiHGM3E1DgdAh22/daIJKb6d0fOSrquT66lkB3YYf06LtJUCU566vnSIY7/Y0rfesd1jm/nqbAarx6IN0bcYOYowBW3sOI13DARG5KMzxEenQXN7McVVIy3fuL/F0aghDjfjEWDgwAHM6Mtgm+SSKkyzbRY5UQUpqEiVxzdICldoRFZIEVGPSKekZNqoNo5X5bcfxO3Hfm43pzJoBsPxpzMiIsCzWgvc9EjZFQgE6JvtQG8CYHmRK5BqOO8TsiFK5z2AwZMbTp3AsFWynTp0++NSnkl/8Heyp0lYSpqlstxIs7bVWDV+qoto4sC1DyfOCTlkTtXxHqgnKNi5KPsqZF/3tT766iFvdzbolBuXsjw1re6nBvGpRGBOA38BNyO8xVkoVay9LOmOqgXy15AwfgoJ78RLOm9picKak3haqBa/VJJbZbWoF5P4ZrDvDYMAuDzFo="
 
 script:
 #We avoid this error :" the job exceeded the maximum log length and has been terminated "
 - echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n  <mirrors>\n    <mirror>\n      <id>mvnsearch-unavailable</id>\n      <name>mvnsearch-unavailable</name>\n      <mirrorOf>mvnsearch</mirrorOf>\n      <url>http://repo1.maven.org/maven2</url>\n    </mirror>\n  </mirrors>\n  <profiles>\n    <profile>\n      <id>no-mvnsearch</id>\n      <repositories>\n        <repository>\n          <id>mvnsearch</id>\n          <url>http://www.mvnsearch.org/maven2</url>\n          <releases>\n            <enabled>true</enabled>\n          </releases>\n          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n        </repository>\n      </repositories>\n    </profile>\n  </profiles>\n  <activeProfiles>\n    <activeProfile>no-mvnsearch</activeProfile>\n  </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
 - cat $HOME/.m2/settings.xml
 # Deploy to Docker
-- mvn clean install
+# the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
-# the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
