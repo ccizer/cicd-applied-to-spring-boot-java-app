@@ -16,5 +16,7 @@ ARG JAR_FILE
 # Add the application's jar to the container
 ADD ${JAR_FILE} app.jar
 
+RUN echo "Oh dang look at that $JAR_FILE"
+
 # Run the jar file
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
