@@ -32,4 +32,9 @@ class CicdAppliedToSpringBootJavaAppApplicationTests {
         assertThat("Hello from Spring Boot!", is(equalTo(response.getBody())));
     }
 
+    @Test
+    void testMainClass() {
+        CicdAppliedToSpringBootJavaAppApplication.main(new String[] {});
+    }
+
 }
