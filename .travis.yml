@@ -16,7 +16,7 @@ addons:
   sonarcloud:
     organization: "cicd-applied-to-spring-boot-java-app-ccizer"
     token:
-      secure: $SONAR_TOKEN
+      secure: "cTqbtyfL4WCMjYYangh/dEUJ8C9Gt6+wNHFZ0JFl6UyM+iDsNIgGeYjXJZ+lXz6laRTQEWt1/mbFNx7X7PAOjH/ONcS0aUPy4M2+SuSLIfvpSLI1d1o0tK/hAwlXoMSA7yYdPkbWF48VgQJnTcCgufyaTppjZmKmEgmuR1eZuuo3dLRVQAoWsSjARl1WbUnnDhvsDxppZ7ffq/9kL1Lcmkks7TGrxGe1aqqbfeT39KG4i89POKz3lJ3tdakA2eUVP4rvaCkHNCqxpJ5R8Fz17hDpIGArvZvBwqofq/h9ob9ZL1OHYfriaS6wcAnrBctjC5CdcX9tAZ5M5ZhDyM82z7K3aDwvjVxS39471sZITWW+CLaPRGxqTRg81Rod1wngAwnkQ4MeuiVDH1hy4meKxwZICob2SXQfw3G7GTInnFibUlEJjA7AAuVTH1SWBxQ0/8lsw6ueUejTFJ7DbVzM16TnHEaNXSOxTrjgFFXbcj2O34YJQNTlmzbeBOJWOfCzkKfwpJEKDnVTZu+PYG8Bsjw1XY9lOzmSFUIWgP3MSwTDsew5138l//RRCHurMi/zzjwZmiFeNDnXEVz3XMpnUPxIu7sfBIcu7QE4xkC40xvKv3cDBvGAxR6Fdo38YT0ImBPXwJ0wWuc+mzsDugbhOs+kii4eziZxcxTdLHVT+xc="
 
 script:
 #We avoid this error :" the job exceeded the maximum log length and has been terminated "
