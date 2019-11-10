@@ -25,16 +25,18 @@ script:
 # Deploy to Docker
 # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=ccizer_cicd-applied-to-spring-boot-java-app
+#deploying the app on Docker & Heroku
+- mvn heroku:deploy
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 
 # Allow Travis to help deploy the app on Heroku
-deploy:
-  provider: heroku
-  api_key:
-    secure: "$HEROKU_API_KEY"
-  app: cicd-spring-boot-java-app-cciz
-  on:
-    tags: true
-    repo: "$IMAGE_NAME"
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: "$HEROKU_API_KEY"
+#  app: cicd-spring-boot-java-app-cciz
+#  on:
+#    tags: true
+#    repo: "$IMAGE_NAME"
