@@ -28,3 +28,13 @@ script:
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+
+# Allow Travis to help deploy the app on Heroku
+deploy:
+  provider: heroku
+  api_key:
+    secure: "$HEROKU_API_KEY"
+  app: cicd-spring-boot-java-app-cciz
+  on:
+    tags: true
+    repo: "$IMAGE_NAME"
