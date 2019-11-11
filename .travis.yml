@@ -27,8 +27,7 @@ script:
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=ccizer_cicd-applied-to-spring-boot-java-app
 #deploying the app on Docker & Heroku
 #- mvn heroku:deploy
-- docker login --username=_ --password=$HEROKU_TOKEN registry.heroku.com
-- DOCKER_IMAGE
+- echo "$HEROKU_TOKEN" | docker login --username=_ --password-stdin registry.heroku.com
 - docker tag $DOCKER_IMAGE registry.heroku.com/$YOUR_APP_NAME/web
 - docker push registry.heroku.com/$YOUR_APP_NAME/web
 
