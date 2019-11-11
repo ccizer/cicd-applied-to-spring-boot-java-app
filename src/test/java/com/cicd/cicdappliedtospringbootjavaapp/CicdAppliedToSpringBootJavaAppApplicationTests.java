@@ -29,7 +29,7 @@ class CicdAppliedToSpringBootJavaAppApplicationTests {
         final ResponseEntity<String> response = testRestTemplate
                 .exchange(url, HttpMethod.GET, new HttpEntity<>(httpHeaders), String.class);
 
-        assertThat("Hello from Spring Boot!", is(equalTo(response.getBody())));
+        assertThat("Hello from Spring Boot WEB!", is(equalTo(response.getBody())));
     }
 
     @Test

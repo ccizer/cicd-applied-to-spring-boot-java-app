@@ -1,6 +1,5 @@
 #we use java
 language: java
-sudo: false
 
 #we add the java development kit (jdk)
 jdk:
@@ -18,9 +17,6 @@ addons:
     organization: "com-ccizer-project"
     token:
       secure: "ntUPp1EEr8dwlbJXvfSQRd6HR18qylgnD4+F09ACGX9mgbNXKrHtWZC3HbRihBDtSyKcfXXJuGXnRJRpTx173VfxE/V2fiqRjMHAR0r7UeNGh5IuZPeYih6aRqsS+BAjh3ujgHNIeAaWgIZbunUqBH6p0jnvYmdO+luqsv5cSl4s7+MC8f/xfF0nGTDYw3Qceeoqb4ZID0AE9mo/1507HRv8VlB0AdoH0jxPsAe48t0lFfVcthwcFCWHO+VjNJZifCI3pxbH07a8Rv9O89oFJhi3RZYnmH0HZanHnexQy4yHCx4V3oZ7zz1sEDO+tqVOt2QxPOfMbdWP/dkgYYkV+pxw85c1dT9I2HRm2PY0dnKEBm2KCIE+7KfRiPcwJ7HFOYFIITeE1dsu6R3/sn4rJ0/Pb9VxWuTToY+tfYYkSC45lI/ukUPcbMMSTdbmicalWOzdeFP0hB25U80YrfxGogOLAsUwEMyyMAgl5mQ61p0JXvJggu6e6uTWNRESUC1p13Iw2XSxvyBNEc9jjldDBD4wdfucxyvkaVxr3dL3LsVApfufak0984rngnqvhNru8LUBrri/rc043S770A11B9zFfKcoPP4Rn0Kn9mxDSm7/b86Ke3FZndsREDcc/pVUCfg3A7R5Wmb9WPuDPd2Fp6RX/wuatpHIjPgyPEkDRs0="
-  apt:
-    sources:
-      - heroku
 
 script:
 #We avoid this error :" the job exceeded the maximum log length and has been terminated "
