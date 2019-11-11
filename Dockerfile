@@ -19,4 +19,4 @@ ADD ${JAR_FILE} app.jar
 #RUN echo "Oh dang look at that $JAR_FILE"
 
 # Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dserver.port=$PORT","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
