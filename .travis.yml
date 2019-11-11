@@ -21,8 +21,6 @@ addons:
   apt:
     sources:
       - heroku
-    packages:
-      - heroku-toolbelt
 
 script:
 #We avoid this error :" the job exceeded the maximum log length and has been terminated "
