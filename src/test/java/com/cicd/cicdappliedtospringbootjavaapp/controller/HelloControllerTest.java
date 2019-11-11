@@ -12,6 +12,6 @@ public class HelloControllerTest {
 
     @Test
     void testHelloController() {
-        assertThat("Hello from Spring Boot!", is(equalTo(helloController.sayHello())));
+        assertThat("Hello from Spring Boot WEB!", is(equalTo(helloController.sayHello())));
     }
 }
