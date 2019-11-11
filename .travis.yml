@@ -26,7 +26,10 @@ script:
 # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=ccizer_cicd-applied-to-spring-boot-java-app
 #deploying the app on Docker & Heroku
-- mvn heroku:deploy
+#- mvn heroku:deploy
+- docker login --username=_ --password=$HEROKU_TOKEN registry.heroku.com
+- docker build -t registry.heroku.com/$YOUR_APP_NAME/web .
+- docker push registry.heroku.com/$YOUR_APP_NAME/web
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
