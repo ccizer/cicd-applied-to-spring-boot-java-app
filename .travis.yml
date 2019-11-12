@@ -26,14 +26,15 @@ script:
 # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=ccizer_cicd-applied-to-spring-boot-java-app
 #deploying the app on Docker & Heroku
-#- mvn heroku:deploy
 - echo "$HEROKU_TOKEN" | docker login --username=_ --password-stdin registry.heroku.com
 - docker tag $DOCKER_IMAGE:latest registry.heroku.com/$YOUR_APP_NAME/web
 - docker push registry.heroku.com/$YOUR_APP_NAME/web
 - heroku container:release web --app $YOUR_APP_NAME
 
 after_success:
+# Codecov integration
 - bash <(curl -s https://codecov.io/bash)
+# Assertible API Monitor Trigger URL
 - |
   curl -u $ASSERTIBLE_TOKEN: -XPOST "https://assertible.com/deployments" -d'{
           "service": "'"${ASSERTIBLE_SERVICE}"'",
