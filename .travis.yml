@@ -12,6 +12,11 @@ branches:
   only:
     - master
 
+stages:
+  - name: deploy
+    # require the tag name to match a regular expression
+    if: tag =~ ^v1
+
 before_install:
 - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
 - docker pull openjdk:8-jdk-alpine
