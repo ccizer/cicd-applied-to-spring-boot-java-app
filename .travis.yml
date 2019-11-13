@@ -10,7 +10,7 @@ services:
 
 branches:
   only:
-    - master
+    - /^release-v-.*$/
 
 before_install:
 - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
