@@ -43,8 +43,4 @@ after_success:
 - bash <(curl -s https://codecov.io/bash)
 # Assertible API Monitor Trigger URL
 - |
-  curl -u $ASSERTIBLE_TOKEN: -XPOST "https://assertible.com/deployments" -d'{
-          "service": "'"${ASSERTIBLE_SERVICE}"'",
-          "environmentName": "'"production"'",
-          "version": "'"v1"'"
-  }'
+  if [ $TRAVIS_BRANCH != "master" ]; then curl -u $ASSERTIBLE_TOKEN: -XPOST "https://assertible.com/deployments" -d'{ "service": "'"${ASSERTIBLE_SERVICE}"'", "environmentName": "'"production"'", "version": "'"v1"'"}'; fi
