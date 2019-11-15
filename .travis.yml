@@ -10,6 +10,7 @@ services:
 
 branches:
   only:
+    - master
     - /^release.*$/
 
 before_install:
@@ -30,10 +31,12 @@ script:
 # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=ccizer_cicd-applied-to-spring-boot-java-app
 #deploying the app on Docker & Heroku
-- echo "$HEROKU_TOKEN" | docker login --username=_ --password-stdin registry.heroku.com
-- docker tag $DOCKER_IMAGE:latest registry.heroku.com/$YOUR_APP_NAME/web
-- docker push registry.heroku.com/$YOUR_APP_NAME/web
-- heroku container:release web --app $YOUR_APP_NAME
+- |
+  if [ $TRAVIS_BRANCH != "master" ]; then echo "$HEROKU_TOKEN" | docker login --username=_ --password-stdin registry.heroku.com; docker tag $DOCKER_IMAGE:latest registry.heroku.com/$YOUR_APP_NAME/web; docker push registry.heroku.com/$YOUR_APP_NAME/web; heroku container:release web --app $YOUR_APP_NAME; fi
+#- echo "$HEROKU_TOKEN" | docker login --username=_ --password-stdin registry.heroku.com
+#- docker tag $DOCKER_IMAGE:latest registry.heroku.com/$YOUR_APP_NAME/web
+#- docker push registry.heroku.com/$YOUR_APP_NAME/web
+#- heroku container:release web --app $YOUR_APP_NAME
 
 after_success:
 # Codecov integration
